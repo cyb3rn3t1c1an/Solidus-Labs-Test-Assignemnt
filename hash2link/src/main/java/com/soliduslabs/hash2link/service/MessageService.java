@@ -20,6 +20,10 @@ public class MessageService {
     }
 
     public String stringToHash(String text) {
+
+        Optional<Message> message = messageRepository.findByContent(text);
+        if (message.isPresent()) return message.get().getId();
+
         MessageDigest messageDigest = null;
         try {
             messageDigest = MessageDigest.getInstance("SHA-256");

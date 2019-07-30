@@ -11,4 +11,6 @@ public interface MessageRepository extends CrudRepository<Message, String> {
     @Cacheable(cacheNames = "MessageByHash")
     @Override
     Optional<Message> findById(String hash);
+
+    Optional<Message> findByContent(String content);
 }
